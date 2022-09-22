@@ -2,3 +2,5 @@ tmp/*
 !tmp/README.md
 
 a.out
+input.txt
+output.txt
