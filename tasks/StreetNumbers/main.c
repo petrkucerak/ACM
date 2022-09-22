@@ -8,7 +8,7 @@ int main(int argc, char const *argv[]) {
         end_point + end_point * end_point) {
       printf("Find solution %d %d\n", central_point, end_point);
     }
-    // TODO: need to compare and add number increasing
+    /*TODO: need to compare and add number increasing*/
   }
   return 0;
 }
