@@ -5,3 +5,11 @@ Předmět rozšířuje schopnost studentů řešit algoritmické problémy z rů
 ## Resources
 
 https://cw.fel.cvut.cz/wiki/courses/a4b36acm3/2022_zs/seminare
+
+## Compilation details
+
+### Online Judge
+
+```sh
+gcc <filename> -lm -lcrypt -O2 -pipe -ansi -DONLINE_JUDGE # for C
+```
