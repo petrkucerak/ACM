@@ -7,6 +7,11 @@
 
 void print_data(int *data, int boxes, int dimesnion);
 
+typedef struct box {
+  int no;
+  int *first_number;
+} Box;
+
 int main(int argc, char const *argv[]) {
   printf("Stacking Boxes!\n");
 
@@ -34,20 +39,22 @@ int main(int argc, char const *argv[]) {
           exit(EXIT_FAILURE);
         }
       }
-    }
-
-    // sorting
-    for (int i = 0; i < boxes; ++i) {
-      // sort a row
+      // sorting dimensions
       for (int j = 0; j < dimesnion; ++j) {
         for (int k = j + 1; k < dimesnion; ++k) {
-          if (*CURRENT_DATA > *NEXT_DATA){
+          if (*CURRENT_DATA > *NEXT_DATA) {
             int tmp = *CURRENT_DATA;
             *CURRENT_DATA = *NEXT_DATA;
             *NEXT_DATA = tmp;
           }
         }
       }
+
+      
+    }
+
+    // sorting boxes
+    for (int i = 0; i < boxes; ++i) {
     }
 
     print_data(data, boxes, dimesnion);
