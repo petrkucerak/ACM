@@ -57,8 +57,7 @@ int main(int argc, char const *argv[]) {
     }
 
     // sorting boxes
-
-    int j = 0;
+    // for j = 0
     for (int i = 0; i < boxes; ++i) {
       for (int k = i + 1; k < boxes; ++k) {
         if (*boxes_p[i].first_number > *boxes_p[k].first_number) {
@@ -71,6 +70,26 @@ int main(int argc, char const *argv[]) {
 
           boxes_p[k].no = tmp.no;
           boxes_p[k].first_number = tmp.first_number;
+        }
+      }
+    }
+
+    for (int j = 1; j < dimesnion; ++j) {
+      for (int i = 0; i < boxes; ++i) {
+        for (int k = i + 1; k < boxes; ++k) {
+          if (boxes_p[i].first_number[j] > boxes_p[k].first_number[j] &&
+              boxes_p[i].first_number[j - 1] ==
+                  boxes_p[k].first_number[j - 1]) {
+            Box tmp;
+            tmp.no = boxes_p[i].no;
+            tmp.first_number = boxes_p[i].first_number;
+
+            boxes_p[i].no = boxes_p[k].no;
+            boxes_p[i].first_number = boxes_p[k].first_number;
+
+            boxes_p[k].no = tmp.no;
+            boxes_p[k].first_number = tmp.first_number;
+          }
         }
       }
     }
@@ -90,7 +109,7 @@ int main(int argc, char const *argv[]) {
 void print_data(int *data, int boxes, int dimesnion) {
   for (int i = 0; i < boxes; ++i) {
     for (int j = 0; j < dimesnion; ++j) {
-      printf("%d ", *(data + j + (i * dimesnion)));
+      printf("%2d ", *(data + j + (i * dimesnion)));
     }
     printf("\n");
   }
@@ -99,7 +118,7 @@ void print_data(int *data, int boxes, int dimesnion) {
 void print_boxes(Box *boxes_p, int boxes, int dimesnion) {
   for (int i = 0; i < boxes; ++i) {
     for (int j = 0; j < dimesnion; ++j) {
-      printf("%d ", *(boxes_p[i].first_number + j));
+      printf("%2d ", *(boxes_p[i].first_number + j));
     }
     printf("\n");
   }
