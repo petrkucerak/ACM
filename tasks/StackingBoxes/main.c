@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define DATA (data + j + (i * dimesnion))
+#define NEXT_DATA (data + k + (i * dimesnion))
+#define CURRENT_DATA (data + j + (i * dimesnion))
+
 void print_data(int *data, int boxes, int dimesnion);
 
 int main(int argc, char const *argv[]) {
@@ -25,12 +29,24 @@ int main(int argc, char const *argv[]) {
     for (int i = 0; i < boxes; ++i) {
       // the current box
       for (int j = 0; j < dimesnion; ++j) {
-        int tmp;
-        if (scanf("%d", &tmp) != 1) {
+        if (scanf("%d", DATA) != 1) {
           fprintf(stderr, "ERROR - input of a box isn't correct!\n");
           exit(EXIT_FAILURE);
         }
-        *(data + j + (i * dimesnion)) = tmp;
+      }
+    }
+
+    // sorting
+    for (int i = 0; i < boxes; ++i) {
+      // sort a row
+      for (int j = 0; j < dimesnion; ++j) {
+        for (int k = j + 1; k < dimesnion; ++k) {
+          if (*CURRENT_DATA > *NEXT_DATA){
+            int tmp = *CURRENT_DATA;
+            *CURRENT_DATA = *NEXT_DATA;
+            *NEXT_DATA = tmp;
+          }
+        }
       }
     }
 
